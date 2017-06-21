@@ -4,9 +4,72 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <name>haha</name>
     <groupId>com.lixin</groupId>
     <artifactId>maven-study</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+    </properties>
+
+
+    <build>
+        <defaultGoal>clean compile</defaultGoal>
+        <!--<finalName>${project.artifactId}-${project.version}</finalName>-->
+        <finalName>${project.name}</finalName>
+
+        <!-- 主源码目录 -->
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <!-- 配置文件目录 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <!-- 测试源码目录 -->
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <!-- 测试配置文件目录 -->
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
+
+
+        <!-- 主输出目录-->
+        <directory>target/</directory>
+        <!-- 主代码class文件目录-->
+        <outputDirectory>target/classes</outputDirectory>
+        <!-- 测试代码class文件目录 -->
+        <testOutputDirectory>target/test-classes</testOutputDirectory>
+
+
+        <!-- 插件管理 -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.6.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <!-- 插件 -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <!--<extensions></extensions>-->
+        <!--<filters></filters>-->
+    </build>
 
 </project>
