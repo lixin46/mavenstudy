@@ -5,19 +5,29 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>haha</name>
+
+    <!-- 5元坐标 -->
+    <!-- groupId、artifactId、version必须 -->
+    <!-- packaging可选，默认jar -->
+    <!-- classifier不能直接定义 -->
     <groupId>com.lixin</groupId>
     <artifactId>maven-study</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+
 
     <properties>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     </properties>
 
 
+
     <build>
+        <!-- 默认目标，直接直接mvn命令时使用 -->
         <defaultGoal>clean compile</defaultGoal>
-        <!--<finalName>${project.artifactId}-${project.version}</finalName>-->
-        <finalName>${project.name}</finalName>
+        <!-- 最终组件名称 -->
+        <finalName>${project.artifactId}-${project.version}</finalName>
 
         <!-- 主源码目录 -->
         <sourceDirectory>src/main/java</sourceDirectory>
@@ -36,6 +46,12 @@
             </testResource>
         </testResources>
 
+        <!-- 定义key=value的properties文件目录-->
+        <!-- 相对于项目根目录 -->
+        <!--<filters>-->
+            <!--<filter>prop.properties</filter>-->
+        <!--</filters>-->
+
 
         <!-- 主输出目录-->
         <directory>target/</directory>
@@ -43,6 +59,8 @@
         <outputDirectory>target/classes</outputDirectory>
         <!-- 测试代码class文件目录 -->
         <testOutputDirectory>target/test-classes</testOutputDirectory>
+
+
 
 
         <!-- 插件管理 -->
@@ -57,19 +75,70 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.6.0</version>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
                 </plugin>
+
             </plugins>
         </pluginManagement>
+
         <!-- 插件 -->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <!--<version>2.6</version>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <tagBase></tagBase>
+                </configuration>
+            </plugin>
         </plugins>
 
-        <!--<extensions></extensions>-->
-        <!--<filters></filters>-->
+        <!-- 插件需要使用的组件 -->
+        <extensions>
+
+        </extensions>
     </build>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-archetype-plugin</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-release-plugin</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-utils</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+    </dependencies>
+
+    <scm>
+        <connection>scm:https://github.com/lixin46/mavenstudy.git</connection>
+        <developerConnection>scm:https://github.com/lixin46/mavenstudy.git</developerConnection>
+        <url>https://github.com/lixin46/mavenstudy</url>
+    </scm>
 </project>
